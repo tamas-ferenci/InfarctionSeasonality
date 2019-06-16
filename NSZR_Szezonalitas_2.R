@@ -163,7 +163,8 @@ TabGAM <- function( fit, df = FALSE, chisq = FALSE, eps = 0.001 ) {
   temp2 <- temp2[ rownames( temp2 )!="(Intercept)", ]
   temp <- data.frame( temp2, temp[ rep( 1:nrow( temp ), temp[ , 1 ] ), ] )
   temp2 <- anova( fit )$s.table
-  temp2 <- data.frame( NA, NA, NA, NA, df = temp2[ , 1 ], Chi.sq = temp2[ , 3 ], p.value = temp2[ , 4 ], var = rownames( temp2 ) )
+  temp2 <- data.frame( NA, NA, NA, NA, df = temp2[ , 1 ], Chi.sq = temp2[ , 3 ], p.value = temp2[ , 4 ],
+                       var = rownames( temp2 ) )
   names( temp2 ) <- names( temp )
   temp <- rbind( temp, temp2 )
   temp$Pr...z.. <- format.pval( temp$Pr...z.., eps = eps )
